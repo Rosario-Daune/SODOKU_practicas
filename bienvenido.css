@@ -1,0 +1,66 @@
+body {
+    background-color: rgb(167, 235, 241);
+}
+
+* 
+
+#contact-wrapper {
+    box-shadow: rgb(154, 228, 236) 0 4px 20px 0;
+}
+
+.welcome-form {
+    background: rgb(167, 235, 241);
+    position: relative;
+    height: 100%;
+    text-transform: uppercase;
+    outline: 0;
+    border-bottom: #3fe5e2eb;
+}
+
+
+.slide-fwd-center image {
+        -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+ }
+
+/**
+ * ----------------------------------------
+ * animation slide-fwd-center
+ * ----------------------------------------
+ */
+ @-webkit-keyframes slide-fwd-center {
+    0% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px);
+              transform: translateZ(160px);
+    }
+  }
+  @keyframes slide-fwd-center {
+    0% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px);
+              transform: translateZ(160px);
+    }
+  }
+  
+
+form {
+    padding: 0,5rem 0rem;
+    position: relative;
+}
+
+.welcome-form form button {
+    background: #3fe5e2eb;
+    color: #666666;
+    border: 0;
+    text-transform: uppercase;
+    padding: 0,9em;
+}
+
+

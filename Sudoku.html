@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" type="text/css" href="Css/Style.css">
+</head>
+<header>
+    <h1>Sudoku</h1>
+</header>
+
+<body>
+
+    <?php
+    $nivel = isset($_GET["n"]) ? $_GET["n"] : 1;
+    ?>
+
+    <h2>Nivel <?php echo $nivel ?></h2>
+
+    <div id="game">
+
+        <form action="sudokubk.php" method="get">
+
+            <?php
+            $rownames = "abcdefghijklmn";
+
+            if ($nivel == 1) {
+                $rows = array(
+                    array(null, null,3, null, 4),
+                    array(2, null, null, 1, null),
+                    array(null,4, null,null, 3),
+                    array(4, null, null,3,2),
+                    array(3, 2,null, null,null),
+                );
+            } else if ($nivel == 2) {
+                $rows = array(
+                    array(null, null,7, null, null, null, 3),
+                    array(7, null, null, null, null, 4,2),
+                    array(null, null,null, 4,2,null,null),
+                    array(null, null,2, null, null,5, null),
+                    array(2, null,null,5,null, null,4),
+                    array(null,5,1, null, null, 2, null),
+                    array(null,null,4,null,null,null,5),
+                );
+            } else if ($nivel == 3) {
+                $rows = array(
+                    array(6,4, null, null,9, null, null, null, null),
+                    array(8, null, null, 1,6,4, null, null, null),
+                    array(null,5,2, null,null, null, null,1,null),
+                    array(3, null, null,null,4, null, null,null,8),
+                    array(5, null,null,8,null,7, null,null,4),
+                    array(7, null,null, null,5, null,null,null,3),
+                    array(null,9, null, null, null, null,6,4,null),
+                    array(null, null, null,5,2,9, null, null,7),
+                    array(null, null, null, null,1, null, null,5,2),
+                );
+            }
+
+            function getClass($row, $col)
+            {
+                // Hacer: Implementar código que dada fila y columna retorne la clase.
+                return "contenedor";
+            }
+            ?>
+
+            <table>
+                <?php
+                for ($row = 0; $row < count($rows); $row++) {
+                    $current_row = $rows[$row];
+                    echo "<tr>";
+                    for ($col = 0; $col < count($current_row); $col++) {
+                        $current_item = $current_row[$col];
+                        if ($current_item == null) {
+                            $colnum = $col + 1;
+                            $colname = "{$rownames[$row]}{$colnum}";
+                        ?>
+                            <td><input type="number" class="<?php getClass($row, $col) ?>" min="1" max="9" maxlength="1" name="<?php echo $colname ?>" id="<?php echo $colname ?>" required></td>
+                        <?php
+                        } else {
+                        ?>
+                            <td>
+                                <p class="numero"><?php echo $current_item ?></p>
+                            </td>
+                        <?php
+                        }
+                    }
+                    echo "</tr>";
+                }
+                ?>
+            </table>
+
+
+            <br>
+            
+            <button type="reset" value="Restaurar">Restaurar</button>
+            <input type="submit" value="Verificar">
+        </form>
+             
+
+    </div>
+
+        <form action="" method="GET">
+            <?php if ($nivel < 3) { ?>
+                <input type="hidden" name="n" value="<?php echo $nivel + 1 ?>"/>
+                <input type="submit" value="Pasar al Siguiente Nivel"></button>
+            <?php } ?>
+        </form>
+
+        <div id="game_type">
+        <h3>Elegir Nivel:</h3>
+        <label><input type="radio" id="radio" class="label" name="diff_level" checked> Basico</label>
+        <label><input type="radio" id="radio" class="label" name="diff_level" checked> Medio</label>
+        <label><input type="radio" id="radio" class="label" name="diff_level" checked> Complejo</label>
+
+
+
+    </div>
+
+
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<?php
+
+    $usuario=$_POST['usuario'];
+    $pass=$_POST['pass'];
+
+    require "conexion.php";
+    $conn=conectar();
+    
+    $sql="select * from registro where reg_user='$usuario';";
+    
+    $resulset=mysqli_query($conn, $sql);
+
+    $registro=mysqli_fetch_assoc($resulset);
+
+    if (mysqli_affected_rows($conn)>0) {
+        //echo "Encontro el usuario";
+        if ($pass==$registro['reg_pass']) {
+
+            //echo "<br>La contraseña es correcta";
+            session_start();
+            $_SESSION['id']=$registro['reg_id'];
+            $_SESSION['nombre']=$registro['reg_name']. " ".$registro['reg_apel'];
+            $_SESSION['usuario']=$usuario;
+            $_SESSION['rol_id']=$registro['rol_id'];
+
+            switch ($_SESSION['rol_id']) {
+                case 1:
+                    //admin
+                    header("location:admin.php");
+                    break;
+                case 2:
+                    //empleado
+                    header("location:empuser.php");
+                    break;
+                
+                default:
+                ?><p><?php echo "<br>Usted escribio cualquiera"; ?></p><?php
+                    break;
+            }
+
+        }else{
+            header("location: inicio.php?badPass");
+        }
+    
+    } 
+    else{
+        header("location: inicio.php?noUsu=$usuario");
+    }
+    
+
+?>
+
+</body>
+</html>

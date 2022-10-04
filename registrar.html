@@ -1,0 +1,17 @@
+<?php
+require('conexion.php');
+// Se Recibe los datos del formulario de registracion
+$usuario=$_POST['usuario'];
+$nombre=$_POST['nombre'];
+$apellido=$_POST['apellido'];
+$email=$_POST['email'];
+$contraseña=$_POST['contraseña'];
+
+
+$conectar= conn(); //Ejecutar conexiones a la b.d.
+$sql="INSERT INTO registro (reg_user, reg_name, reg_apel, reg_email, reg_pass)
+VALUES ('$usuario', '$nombre', '$apellido', '$email', '$contraseña')";
+mysqli_query($conectar, $sql)or trigger_error("Query Failed! SQL- Error:".mysqli_error($conectar), E_USER_ERROR);
+
+?>
+

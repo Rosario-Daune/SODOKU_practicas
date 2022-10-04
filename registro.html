@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>formulario de registro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet'  href='iniciosesion.css'>
+
+</head>
+<body>
+    <div class="Logo-Tuxy">
+        
+    </div>
+    <form class="formulario" action="registrar.php" method="post">
+        <input type="text" name="usuario" placeholder="usuario" maxlength="20" required>
+        <input type="text" name="nombre" maxlength="30" required>
+        <input type="text" name="apellido" maxlength="30" required>
+        <input type="email" name="email" maxlength="50" required>
+        <input type="password" minlength="8" maxlength="30" name="contraseña" required><p>
+            <input type="submit" value="Registrarse">
+            <input type="reset"  value="Limpiar campos">
+    </form>
+
+</body>
+</html>
