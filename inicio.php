@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="iniciosesion.css">
+</head>
+<body>
+    <div class="formulario">
+        <h1>Inicio de Sesión</h1>
+        <form action="inicioseguro.php" method="post">
+            <div class="username">
+                <input type="text" name="usuario" placeholder="Usuario" required>
+            <?php
+            
+                if (isset($_GET['noUsu'])) {
+                    ?><p><?php echo "<br>No existe el usuario ".$_GET['noUsu'];?></p><?php
+            }
+
+            ?>
+            </div>
+            <div class="username">
+                <input type="password" name="pass" placeholder="Contraseña" required>
+            <?php
+
+                if (isset($_GET['badPass'])) {
+                    ?><p><?php echo "<br>La contraseña es incorrecta";?></p><?php
+                }
+
+            ?>
+            </div>
+            <input type="submit" value="Iniciar Sesión">
+            <div class="Registrarse">
+                <br>Quiero <a href="registro.php">registrarme...</a><br>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>
