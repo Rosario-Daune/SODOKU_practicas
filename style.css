@@ -1,7 +1,11 @@
 body{
-    background-color: rgb(167, 235, 241);
+    background-color: #a7ebf1;
     color: black;
     font-family: 'Roboto', sans-serif;
+}
+
+table{
+    display: table;
 }
 
 table,td{
@@ -9,6 +13,12 @@ table,td{
     border-bottom: 5px solid #000000;
     border: 1px solid #000000;
     background-color: #dfdfdf;
+    margin: auto;
+}
+
+td{
+    width: 70px;
+    height: 80px;
 }
 
 h1{
@@ -44,8 +54,22 @@ p{
     justify-content: center;
 }
 
-p.incorrecto{
-    color: red;
+.error{
+    background-color: red;
+    width: 70px;
+    height: 80px;
+}
+
+.noterror{
+    background-color: white;
+    width: 70px;
+    height: 80px;
+}
+
+.botones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input[type=number]::-webkit-inner-spin-button,
